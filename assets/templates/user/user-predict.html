@@ -1,0 +1,456 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <!-- Basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <!-- Mobile Metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- Site Metas -->
+   <title>Diabetic Retinopathy Detection</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <!-- Site Icons -->
+   <link href="{% static 'main/images/fevicon.ico.png' %}"  rel="shortcut icon" type="image/x-icon" />
+   <link href="{% static 'main/images/apple-touch-icon.png' %}" rel="apple-touch-icon">
+   <!-- Bootstrap CSS -->
+   <link  href="{% static 'main/css/bootstrap.min.css' %}" rel="stylesheet">
+   <!-- Site CSS -->
+   <link  href="{% static 'main/style.css' %}" rel="stylesheet">
+   <!-- Colors CSS -->
+   <link  href="{% static 'main/css/colors.css' %}" rel="stylesheet">
+   <!-- ALL VERSION CSS -->
+   <link  href="{% static 'main/css/versions.css' %}" rel="stylesheet">
+   <!-- Responsive CSS -->
+   <link  href="{% static 'main/css/responsive.css'%}" rel="stylesheet">
+   <!-- Custom CSS -->
+   <link  href="{% static 'main/css/custom.css' %}" rel="stylesheet">
+   <!-- Modernizer for Portfolio -->
+   <script src="{% static 'main/js/modernizer.js' %}"></script>
+   <!-- [if lt IE 9] -->
+   <style>
+    /* General styles */
+    body {
+        background-image: url('{% static 'main/images/fig8.JPG' %}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        font-family: "Roboto", sans-serif;
+    }
+    
+    .model-container {
+        border: 2px solid blue;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .custom {
+        background-color:blue;
+        border: 1px solid #ced4da;
+        padding: 10px;
+        cursor: pointer;
+        color:#fff;
+        font-size:18px;
+    }
+    .custom.selected {
+        background-color: #333;
+        color: white;
+    }
+    #file-drag {
+        border: 2px dashed #007bff;
+        padding: 20px;
+        cursor: pointer;
+    }
+    #file-drag:hover {
+        background-color: #f8f9fa;
+    }
+    #file-image {
+        display: none;
+        max-width: 100%;
+        height: auto;
+    }
+    #notimage {
+        display: none;
+    }
+    .hidden {
+        display: none;
+    }
+    
+    .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+        background-color: #f8f9fa;
+    }
+  
+    
+ </style>
+ 
+   </head>
+   <body class="clinic_version">
+      
+      <header>
+         <div class="header-top wow fadeIn" style="background-color: #fff;height:100px;">
+            <div class="container" style="display: flex; justify-content: space-between; align-items:right;">
+                <a class="navbar-brand" href="index.html" style="display: flex; align-items: center;">
+                  <span style="color:dark; margin-right: 5px; font-size: 19px;">Diabetic Retinopathy Detection</span>
+
+                    <img src="{% static 'main/images/fig1.JPG' %}" alt="Diabetic Retinopathy Detection" style="height: 70px; width: 100px;">
+                </a>
+                <div class="right-header">
+                  <div class="header-info" style="display: flex; flex-wrap: wrap;">
+                     <div class="info-inner" style="flex: 1; max-width: 500px;">
+                        <span class="icontop"><img src="{% static 'main/images/phone-icon.png' %}" alt="#"></span>
+                        <span class="iconcont"><a href="tel:800123456" style="color: dark;">+91 99593 82287</a></span>
+                     </div>
+                     <div class="info-inner" style="flex: 1; max-width:900px;">
+                        <span class="icontop"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                        <span class="iconcont"><a data-scroll href="mailto:info@yoursite.com" style="color: dark;">projects@codeleaf.in</a></span>
+                     </div>
+                     <div class="info-inner" style="flex: 1; width:1000px;">
+                        <span class="icontop"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                        <span class="iconcont"><a data-scroll href="#" style="color: dark;">Daily: 10-6pm</a></span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+        </div>
+        
+         <div class="header-bottom wow fadeIn">
+            <div class="container">
+               <nav class="main-menu">
+                  <div class="navbar-header">
+                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i class="fa fa-bars" aria-hidden="true"></i></button>
+                  </div>
+				  <div class="serch-bar">
+                    <div id="custom-search-input">
+                       <div class="input-group col-md-12">
+                          <input type="text" class="form-control input-lg" placeholder="Search" />
+                          <span class="input-group-btn">
+                          <button class="btn btn-info btn-lg" type="button">
+                          <i class="fa fa-search" aria-hidden="true"></i>
+                          </button>
+                          </span>
+                       </div>
+                    </div>
+                 </div>
+              
+                    <div id="navbar" class="navbar-collapse collapse col-md-12" style=>
+                        <ul class="nav navbar-nav">
+                            <li><a class="#" href="{% url 'user_dashboard' %}">Dashboard</a></li>
+                            <li><a data-scroll href="{% url 'user_predict' %}">Diabetic Retinopathy Detection</a></li>
+                            <li><a data-scroll href="{% url 'user_profile' %}">Profile</a></li>
+                            <li><a data-scroll href="{% url 'user_feedback' %}">Feedback</a></li>
+                            <li><a data-scroll href="{% url 'user_login' %}">Logout</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+         </div>
+      </header>
+     
+
+      
+      <div class="container text-center" style="padding-top:300px;">
+        <div class="shadow border p-4 mt-5">
+            <div class="row">
+                <form id="imageForm" enctype="multipart/form-data" method="post" class="col-md-12 mx-auto">
+                    {% csrf_token %}
+                    <!-- Ensemble Model Selector -->
+<div class="model-container text-center my-5">
+    <h2 class="text-center mb-4">Choose Your Model</h2>
+    <div class="d-flex justify-content-center">
+        <div class="form-check model-button">
+            <input class="form-check-input visually-hidden" type="radio" value="Ensemble" id="model-Ensemble" name="model_type">
+            <label class="form-check-label btn ensemble-btn" for="model-Ensemble">✨ Ensemble Model ✨</label>
+        </div>
+    </div>
+</div>
+
+<!-- Add this to your CSS -->
+<style>
+    .ensemble-btn {
+        background: linear-gradient(135deg, #6e8efb, #a777e3);
+        color: white;
+        padding: 15px 30px;
+        font-size: 1.25rem;
+        border-radius: 50px;
+        transition: all 0.4s ease;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        border: none;
+        cursor: pointer;
+    }
+
+    .ensemble-btn:hover {
+        transform: scale(1.08);
+        background: linear-gradient(135deg, #a777e3, #6e8efb);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .ensemble-btn:active {
+        transform: scale(0.96);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+    
+                    <div class="mt-4" style="padding-top:30px;">
+                        <label for="file-upload" id="file-drag" class="d-flex flex-column align-items-center justify-content-center border rounded p-5">
+                            <img id="file-image" src="#" alt="Preview" class="img-fluid mb-3" style="display: none; width:500px;height:300px;">
+                            <div id="start" class="text-center">
+                                <i class="fa fa-download fa-3x mb-3" aria-hidden="true"></i>
+                                <div>Select a file or drag here</div>
+                                <div id="notimage" class="text-danger hidden mt-2">Please select an image</div>
+                                <span id="file-upload-btn" class="btn btn-custom mt-2">Select a file</span>
+                                <input id="file-upload" type="file" name="img" accept="image/*" class="d-none">
+                            </div>
+                            <div id="response" class="hidden mt-3 w-100">
+                                <div id="messages" class="mb-2"></div>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="file-progress" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+    
+                    <div class="mt-4 text-center">
+                        <button type="submit" class="btn btn-primary"style="width:200px;height:50px; font-size:20px;">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function selectModel(model) {
+            document.getElementById('selected-model').innerText = 'Selected Model: ' + model;
+            document.getElementById('selected-model').style.display = 'block';
+        }
+    
+        document.getElementById('file-upload').addEventListener('change', function() {
+            var file = this.files[0];
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('file-image').src = e.target.result;
+                document.getElementById('file-image').style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        });
+    </script>
+    <script>
+        function selectModel(model) {
+            // Remove 'selected' class from all labels
+            document.querySelectorAll('.form-check-label').forEach(label => {
+                label.classList.remove('selected');
+            });
+
+            // Add 'selected' class to the clicked label
+            document.querySelector(`label[for='model-${model}']`).classList.add('selected');
+        }
+    </script>
+    
+  
+    
+    
+     
+
+
+    
+      
+      <!-- end section -->
+	  
+	  <!-- doctor -->
+	  
+	<div id="doctors" class="parallax section db" data-stellar-background-ratio="0.4" style="background:#fff; padding-top:20px;" data-scroll-id="doctors" tabindex="-1">
+        <div class="container">
+	        <div class="row dev-list text-center">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.2s; animation-name: fadeIn;">
+                    <div class="widget clearfix">
+                        <img src="{% static 'main/images/doctor_01.jpg' %}" alt="" class="img-responsive img-rounded">
+                        <div class="widget-title">
+                            <h3>Soren Bo Bostian</h3>
+                            <small>Clinic Owner</small>
+                        </div>
+                        <!-- end title -->
+                        <p>Hello guys, I am Soren from Sirbistana. I am senior art director and founder of Violetta.</p>
+
+                        <div class="footer-social">
+                            <a href="#" class="btn grd1"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-github"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div><!--widget -->
+                </div><!-- end col -->
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.4s; animation-name: fadeIn;">
+                    <div class="widget clearfix">
+                        <img src="{% static 'main/images/doctor_02.jpg' %}" alt="" class="img-responsive img-rounded">
+                        <div class="widget-title">
+                            <h3>Bryan Saftler</h3>
+                            <small>Internal Diseases</small>
+                        </div>
+                        <!-- end title -->
+                        <p>Hello guys, I am Soren from Sirbistana. I am senior art director and founder of Violetta.</p>
+
+                        <div class="footer-social">
+                            <a href="#" class="btn grd1"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-github"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div><!--widget -->
+                </div><!-- end col -->
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 wow fadeIn">
+                    <div class="widget clearfix">
+                        <img src="{% static 'main/images/doctor_03.jpg' %}" alt="" class="img-responsive img-rounded">
+                        <div class="widget-title">
+                            <h3>Matthew Bayliss</h3>
+                            <small>Orthopedics Expert</small>
+                        </div>
+                        <!-- end title -->
+                        <p>Hello guys, I am Soren from Sirbistana. I am senior art director and founder of Violetta.</p>
+
+                        <div class="footer-social">
+                            <a href="#" class="btn grd1"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-github"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div><!--widget -->
+                </div><!-- end col -->
+
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div>
+	  
+	
+	
+
+      <footer id="footer" class="footer-area wow fadeIn">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="logo padding">
+                     <a href=""><img src="{% static 'main/images/pic6.PNG' %}" alt=""></a>
+                     <p>Locavore pork belly scen ester pine est chill wave microdosing pop uple itarian cliche artisan.</p>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="footer-info padding">
+                     <h3>CONTACT US</h3>
+                     <p><i class="fa fa-map-marker" aria-hidden="true"></i> Our location
+                        Hyderabad</p>
+                     <p><i class="fa fa-paper-plane" aria-hidden="true"></i>projects@codeleaf.in</p>
+                     <p><i class="fa fa-phone" aria-hidden="true"></i> +91 99593 82287</p>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="subcriber-info">
+                     <h3>SUBSCRIBE</h3>
+                     <p>GetDiabetic Retinopathy Detection, tip and solutions to your problems from our experts.</p>
+                     <div class="subcriber-box">
+                        <form id="mc-form" class="mc-form">
+                           <div class="newsletter-form">
+                              <input type="email" autocomplete="off" id="mc-email" placeholder="Email address" class="form-control" name="EMAIL">
+                              <button class="mc-submit" type="submit"><i class="fa fa-paper-plane"></i></button> 
+                              <div class="clearfix"></div>
+                              <!-- mailchimp-alerts Start -->
+                              <div class="mailchimp-alerts">
+                                 <div class="mailchimp-submitting"></div>
+                                 <!-- mailchimp-submitting end -->
+                                 <div class="mailchimp-success"></div>
+                                 <!-- mailchimp-success end -->
+                                 <div class="mailchimp-error"></div>
+                                 <!-- mailchimp-error end -->
+                              </div>
+                              <!-- mailchimp-alerts end -->
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <div class="copyright-area wow fadeIn">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-8">
+                  <div class="footer-text">
+                     <p>© Developed by <a id="tw"  target="_blank">codeleaf.in</a></p>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="social">
+                     <ul class="social-links">
+                        <li><a href=""><i class="fa fa-rss"></i></a></li>
+                        <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                        <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                        <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href=""><i class="fa fa-youtube"></i></a></li>
+                        <li><a href=""><i class="fa fa-pinterest"></i></a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end copyrights -->
+      <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+      <!-- all js files -->
+      <script src="{% static 'main/js/all.js' %}"></script>
+      <!-- all plugins -->
+      <script src="{% static 'main/js/custom.js' %}"></script>
+      
+      <!-- map -->
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNUPWkb4Cjd7Wxo-T4uoUldFjoiUA1fJc&callback=myMap"></script>
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+         {% if messages %}
+            {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <script>swal({
+                            title: "Success!",
+                            text: "{{message}}",
+                            icon: "success",
+                            button: "OK",
+                        });
+                    </script>
+                
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                    <script>swal({
+                            title: "Warning :)",
+                            text: "{{message}}",
+                            icon: "warning",
+                            button: "OK",
+                        
+                        });
+                    </script>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                    <script>swal({
+                            title: "info :)",
+                            text: "{{message}}",
+                            icon: "info",
+                            button: "OK",
+                        });
+                    </script>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <script>swal({
+                            title: "error :)",
+                            text: "{{message}}",
+                            icon: "error",
+                            button: "OK",
+                        });
+                    </script>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+   </body>
+</html>

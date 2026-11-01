@@ -1,0 +1,552 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <!-- Basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <!-- Mobile Metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- Site Metas -->
+   <title>Diabetic Retinopathy Detection</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <!-- Site Icons -->
+   <link href="{% static 'main/images/fevicon.ico.png' %}"  rel="shortcut icon" type="image/x-icon" />
+   <link href="{% static 'main/images/apple-touch-icon.png' %}" rel="apple-touch-icon">
+   <!-- Bootstrap CSS -->
+   <link  href="{% static 'main/css/bootstrap.min.css' %}" rel="stylesheet">
+   <!-- Site CSS -->
+   <link  href="{% static 'main/style.css' %}" rel="stylesheet">
+   <!-- Colors CSS -->
+   <link  href="{% static 'main/css/colors.css' %}" rel="stylesheet">
+   <!-- ALL VERSION CSS -->
+   <link  href="{% static 'main/css/versions.css' %}" rel="stylesheet">
+   <!-- Responsive CSS -->
+   <link  href="{% static 'main/css/responsive.css'%}" rel="stylesheet">
+   <!-- Custom CSS -->
+   <link  href="{% static 'main/css/custom.css' %}" rel="stylesheet">
+   <!-- Modernizer for Portfolio -->
+   <script src="{% static 'main/js/modernizer.js' %}"></script>
+   <!-- [if lt IE 9] -->
+   <style>
+    #preloader {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       height: 100vh; 
+   }
+   
+   .preloader {
+       border-radius: 100%;
+   }
+   body {
+      background-image: url('{% static 'main/images/fig7.JPG' %}');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed; /* Optional - this keeps the background fixed while scrolling */
+      font-family: "Roboto", sans-serif;
+  }
+  
+ 
+  
+  .custom-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width:2500px;
+    overflow: hidden; /* Hide overflow content */
+  }
+  
+  .image-container {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .image-container h2,
+  .image-container h1 {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .left-section,
+  .info-section {
+    margin-bottom: 30px;
+  }
+  
+  .section-title {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .image-chart-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .image-chart-container .image-container,
+  .image-chart-container .chart-container {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .chart-container canvas {
+    max-width: 90%;
+    height: auto;
+  }
+  
+  .pesticide-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  .pesticide-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .pesticide-info {
+    flex: 1;
+    margin-left: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Ensure all elements include padding and border in total width and height */
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Remove potential horizontal scrollbar */
+  body {
+    overflow-x: hidden;
+  }
+  .image-container {
+    text-align: center; /* Center align content */
+    margin-bottom: 20px; /* Space between each image container */
+}
+
+.image-container h2 {
+    color: #fff;
+    background-color: #007bff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Space between heading and image */
+}
+
+.image-container img {
+    width: 100%; /* Make the image width 100% of parent container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Rounded corners for the image */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Add box shadow for a subtle effect */
+}
+.section-title span:hover {
+    color: blue; /* Example: Change text color on hover */
+    cursor: pointer; /* Optional: Change cursor to pointer */
+}
+
+#modelName:hover {
+    font-weight: bold; /* Example: Change font weight on hover */
+}
+
+#modelAccuracy:hover {
+    background-color: yellow; /* Example: Change background color on hover */
+}
+  
+  </style>
+   </head>
+   <body class="clinic_version">
+     
+      <header>
+         <div class="header-top wow fadeIn" style="background-color: #fff;height:100px;">
+            <div class="container" style="display: flex; justify-content: space-between; align-items:right;">
+                <a class="navbar-brand" href="index.html" style="display: flex; align-items: center;">
+                  <span style="color:dark; margin-right: 5px; font-size: 19px;">Diabetic Retinopathy Detection</span>
+
+                    <img src="{% static 'main/images/fig1.JPG' %}" alt="Diabetic Retinopathy Detection" style="height: 70px; width: 100px;">
+                </a>
+                <div class="right-header">
+                  <div class="header-info" style="display: flex; flex-wrap: wrap;">
+                     <div class="info-inner" style="flex: 1; max-width: 500px;">
+                        <span class="icontop"><img src="{% static 'main/images/phone-icon.png' %}" alt="#"></span>
+                        <span class="iconcont"><a href="tel:800123456" style="color: dark;">+91 99593 82287</a></span>
+                     </div>
+                     <div class="info-inner" style="flex: 1; max-width:900px;">
+                        <span class="icontop"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                        <span class="iconcont"><a data-scroll href="mailto:info@yoursite.com" style="color: dark;">projects@codeleaf.in</a></span>
+                     </div>
+                     <div class="info-inner" style="flex: 1; width:1000px;">
+                        <span class="icontop"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                        <span class="iconcont"><a data-scroll href="#" style="color: dark;">Daily: 10-6pm</a></span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+        </div>
+        
+         <div class="header-bottom wow fadeIn">
+            <div class="container">
+               <nav class="main-menu">
+                  <div class="navbar-header">
+                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i class="fa fa-bars" aria-hidden="true"></i></button>
+                  </div>
+				  <div class="serch-bar">
+                    <div id="custom-search-input">
+                       <div class="input-group col-md-12">
+                          <input type="text" class="form-control input-lg" placeholder="Search" />
+                          <span class="input-group-btn">
+                          <button class="btn btn-info btn-lg" type="button">
+                          <i class="fa fa-search" aria-hidden="true"></i>
+                          </button>
+                          </span>
+                       </div>
+                    </div>
+                 </div>
+              
+                    <div id="navbar" class="navbar-collapse collapse col-md-12" style=>
+                        <ul class="nav navbar-nav">
+                            <li><a class="#" href="{% url 'user_dashboard' %}">Dashboard</a></li>
+                            <li><a data-scroll href="{% url 'user_predict' %}">Diabetic Retinopathy Detection</a></li>
+                            <li><a data-scroll href="{% url 'user_profile' %}">Profile</a></li>
+                            <li><a data-scroll href="{% url 'user_feedback' %}">Feedback</a></li>
+                            <li><a data-scroll href="{% url 'user_login' %}">Logout</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+         </div>
+      </header>
+     
+      <div class="container" style="padding-top:200px;">
+        <div class="row" style="padding-top: 20px;">
+            <div class="col-md-12">
+                <div class="custom-container">
+                    <h1 class="text-center mb-4">Image Segmentation Result</h1>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="image-container">
+                                <h2>Uploaded Image</h2>
+                                <img src="data:image/jpeg;base64,{{ uploaded_image_base64 }}" alt="Uploaded Image" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="image-container">
+                                <h2>RGB Image</h2>
+                                <img src="data:image/jpeg;base64,{{ rgb_image_base64 }}" alt="RGB Image" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="image-container">
+                                <h2>Segmented Image</h2>
+                                <img src="data:image/jpeg;base64,{{ segmented_image_base64 }}" alt="Segmented Image" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2" style="padding-top:100px;">
+        <div class="col-md-12">
+            <div class="custom-container">
+                <h2 style="color:blue; text-align: center;">Result</h2>
+                <div class="container" style="display: flex; flex-direction: row; gap: 10px;">
+                    <div class="left-section" style="flex: 1;">
+                        <h3 class="section-title">Diabetic Retinopathy Detection: </span>{{ predicted_label }}</h3>
+                        <div class="image-chart-container" style="display: flex; flex-direction: row; gap: 10px;">
+                            <div class="image-container" style="flex: 1;">
+                                <h2>Your Image</h2>
+                                <img src="{{ image_path }}" alt="Uploaded Image" class="img-fluid" style="height: 300px; width: 100%;">
+                            </div>
+                            <div class="chart-container" style="flex: 1;">
+                                <h2>Model Used: <span id="modelName">Ensemble Model Executed Successfully</span></h2>
+                                <canvas id="accuracyChart" style="height:250px; width:90%;"></canvas>
+                                <h2>Model Accuracy: <span id="modelAccuracy">{{ model_accuracy }}%</span></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="medical-recommendation-container">
+                    <div class="recommendation-info">
+                        <h2>Medications for Diabetic Retinopathy:</h2>
+                        <p style="color:#333;"><strong>1. Anti-VEGF Injections:</strong> Medications like ranibizumab (Lucentis), aflibercept (Eylea), and bevacizumab (Avastin) can help reduce swelling and leakage of fluid from abnormal blood vessels in the retina.</p>
+                        <p style="color:#333;"><strong>2. Steroid Injections:</strong> In some cases, corticosteroids may be injected into the eye to reduce inflammation and swelling.</p>
+                        <p style="color:#333;"><strong>3. Laser Treatment:</strong> Laser photocoagulation therapy can be used to seal leaking blood vessels or to shrink abnormal vessels that are prone to leakage.</p>
+                    </div>
+                    <div class="additional-info">
+                        <h2>Additional Recommendations:</h2>
+                        <ul>
+                            <li>Strict control of blood sugar levels through diet, exercise, and medication as prescribed by a healthcare provider.</li>
+                            <li>Regular eye exams and screenings for diabetic retinopathy.</li>
+                            <li>Managing other risk factors like hypertension and cholesterol levels.</li>
+                            <li>Educating patients about symptoms of diabetic retinopathy and the importance of early intervention.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      // Get the canvas element
+      var ctx = document.getElementById("accuracyChart").getContext("2d");
+
+      // Initialize accuracy value from backend
+      var accuracy = {{ model_accuracy }};
+
+      // Create the chart
+      var chart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: ["Accuracy", "Accuracy"],
+          datasets: [
+            {
+              label: "Accuracy",
+              data: [0, accuracy], // Set accuracy values (0% and the dynamic value from backend)
+              backgroundColor: [
+                "rgba(255, 99, 132, 0.2)",
+                "rgba(54, 162, 235, 0.2)",
+              ],
+              borderColor: [
+                "rgba(255, 99, 132, 1)",
+                "rgba(54, 162, 235, 1)",
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              max: 100, // Set the y-axis maximum to 100 for accuracy percentage
+            },
+          },
+        },
+      });
+    </script>
+    
+      
+      <!-- end section -->
+	  
+	  <!-- doctor -->
+	<div class="" style="padding-top:100px;"></div>
+	<div id="doctors" class="parallax section db" data-stellar-background-ratio="0.4" style="background:#fff; padding-top:10px;" data-scroll-id="doctors" tabindex="-1">
+        <div class="container">
+	        <div class="row dev-list text-center">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.2s; animation-name: fadeIn;">
+                    <div class="widget clearfix">
+                        <img src="{% static 'main/images/doctor_01.jpg' %}" alt="" class="img-responsive img-rounded">
+                        <div class="widget-title">
+                            <h3>Soren Bo Bostian</h3>
+                            <small>Clinic Owner</small>
+                        </div>
+                        <!-- end title -->
+                        <p>Hello guys, I am Soren from Sirbistana. I am senior art director and founder of Violetta.</p>
+
+                        <div class="footer-social">
+                            <a href="#" class="btn grd1"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-github"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div><!--widget -->
+                </div><!-- end col -->
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.4s; animation-name: fadeIn;">
+                    <div class="widget clearfix">
+                        <img src="{% static 'main/images/doctor_02.jpg' %}" alt="" class="img-responsive img-rounded">
+                        <div class="widget-title">
+                            <h3>Bryan Saftler</h3>
+                            <small>Internal Diseases</small>
+                        </div>
+                        <!-- end title -->
+                        <p>Hello guys, I am Soren from Sirbistana. I am senior art director and founder of Violetta.</p>
+
+                        <div class="footer-social">
+                            <a href="#" class="btn grd1"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-github"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div><!--widget -->
+                </div><!-- end col -->
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 wow fadeIn">
+                    <div class="widget clearfix">
+                        <img src="{% static 'main/images/doctor_03.jpg' %}" alt="" class="img-responsive img-rounded">
+                        <div class="widget-title">
+                            <h3>Matthew Bayliss</h3>
+                            <small>Orthopedics Expert</small>
+                        </div>
+                        <!-- end title -->
+                        <p>Hello guys, I am Soren from Sirbistana. I am senior art director and founder of Violetta.</p>
+
+                        <div class="footer-social">
+                            <a href="#" class="btn grd1"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-github"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div><!--widget -->
+                </div><!-- end col -->
+
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div>
+	  
+	
+	
+
+      <footer id="footer" class="footer-area wow fadeIn">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="logo padding">
+                     <a href=""><img src="{% static 'main/images/pic6.PNG' %}" alt=""></a>
+                     <p>Locavore pork belly scen ester pine est chill wave microdosing pop uple itarian cliche artisan.</p>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="footer-info padding">
+                     <h3>CONTACT US</h3>
+                     <p><i class="fa fa-map-marker" aria-hidden="true"></i> Our location
+                        Hyderabad</p>
+                     <p><i class="fa fa-paper-plane" aria-hidden="true"></i>projects@codeleaf.in</p>
+                     <p><i class="fa fa-phone" aria-hidden="true"></i> +91 99593 82287</p>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="subcriber-info">
+                     <h3>SUBSCRIBE</h3>
+                     <p>GetDiabetic Retinopathy Detection, tip and solutions to your problems from our experts.</p>
+                     <div class="subcriber-box">
+                        <form id="mc-form" class="mc-form">
+                           <div class="newsletter-form">
+                              <input type="email" autocomplete="off" id="mc-email" placeholder="Email address" class="form-control" name="EMAIL">
+                              <button class="mc-submit" type="submit"><i class="fa fa-paper-plane"></i></button> 
+                              <div class="clearfix"></div>
+                              <!-- mailchimp-alerts Start -->
+                              <div class="mailchimp-alerts">
+                                 <div class="mailchimp-submitting"></div>
+                                 <!-- mailchimp-submitting end -->
+                                 <div class="mailchimp-success"></div>
+                                 <!-- mailchimp-success end -->
+                                 <div class="mailchimp-error"></div>
+                                 <!-- mailchimp-error end -->
+                              </div>
+                              <!-- mailchimp-alerts end -->
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <div class="copyright-area wow fadeIn">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-8">
+                  <div class="footer-text">
+                     <p>© Developed by <a id="tw"  target="_blank">codeleaf.in</a></p>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="social">
+                     <ul class="social-links">
+                        <li><a href=""><i class="fa fa-rss"></i></a></li>
+                        <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                        <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                        <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href=""><i class="fa fa-youtube"></i></a></li>
+                        <li><a href=""><i class="fa fa-pinterest"></i></a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end copyrights -->
+      <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+      <!-- all js files -->
+      <script src="{% static 'main/js/all.js' %}"></script>
+      <!-- all plugins -->
+      <script src="{% static 'main/js/custom.js' %}"></script>
+      <!-- map -->
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNUPWkb4Cjd7Wxo-T4uoUldFjoiUA1fJc&callback=myMap"></script>
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+         {% if messages %}
+            {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <script>swal({
+                            title: "Success!",
+                            text: "{{message}}",
+                            icon: "success",
+                            button: "OK",
+                        });
+                    </script>
+                
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                    <script>swal({
+                            title: "Warning :)",
+                            text: "{{message}}",
+                            icon: "warning",
+                            button: "OK",
+                        
+                        });
+                    </script>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                    <script>swal({
+                            title: "info :)",
+                            text: "{{message}}",
+                            icon: "info",
+                            button: "OK",
+                        });
+                    </script>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <script>swal({
+                            title: "error :)",
+                            text: "{{message}}",
+                            icon: "error",
+                            button: "OK",
+                        });
+                    </script>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+   </body>
+</html>

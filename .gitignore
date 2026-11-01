@@ -1,0 +1,30 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Django
+db.sqlite3
+media/
+
+# Environment / secrets
+.env
+.venv/
+venv/
+env/
+
+# Large trained ML models
+*.h5
+*.keras
+*.pth
+*.pt
+
+# IDE
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db

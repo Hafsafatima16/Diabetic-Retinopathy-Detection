@@ -1,0 +1,441 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <!-- Basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <!-- Mobile Metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- Site Metas -->
+   <title>Diabetic Retinopathy Detection</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <!-- Site Icons -->
+   <link href="{% static 'main/images/fevicon.ico.png' %}"  rel="shortcut icon" type="image/x-icon" />
+   <link href="{% static 'main/images/apple-touch-icon.png' %}" rel="apple-touch-icon">
+   <!-- Bootstrap CSS -->
+   <link  href="{% static 'main/css/bootstrap.min.css' %}" rel="stylesheet">
+   <!-- Site CSS -->
+   <link  href="{% static 'main/style.css' %}" rel="stylesheet">
+   <!-- Colors CSS -->
+   <link  href="{% static 'main/css/colors.css' %}" rel="stylesheet">
+   <!-- ALL VERSION CSS -->
+   <link  href="{% static 'main/css/versions.css' %}" rel="stylesheet">
+   <!-- Responsive CSS -->
+   <link  href="{% static 'main/css/responsive.css'%}" rel="stylesheet">
+   <!-- Custom CSS -->
+   <link  href="{% static 'main/css/custom.css' %}" rel="stylesheet">
+   <!-- Modernizer for Portfolio -->
+   <script src="{% static 'main/js/modernizer.js' %}"></script>
+   <!-- [if lt IE 9] -->
+   <style>
+    #preloader {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       height: 100vh; 
+   }
+   
+   .preloader {
+       border-radius: 100%;
+   }
+  
+    .text-color {
+      color: #145a32;
+    }
+    .card {
+      width: 400px;
+      padding: 10px;
+      border-radius: 20px;
+      background: #d4efdf;
+      border: none;
+      position: relative;
+      height:300px;
+    }
+    
+    .mobile-text {
+      color: #cd5c5c;
+      font-size: 15px;
+    }
+    .form-control {
+      margin-right: 12px;
+    }
+    .form-control:focus {
+      color: #495057;
+      background-color: #d4efdf;
+      border-color: #c0392b;
+      outline: 0;
+      box-shadow: none;
+    }
+    .cursor {
+      cursor: pointer;
+    }
+    .input-field {
+      width: 50px;
+      margin: 0 5px;
+      text-align: center;
+    }<script>
+      function myFunction() {
+      alert("Your Vote was Successfully Submited");
+      }
+  </script>
+  <style>
+      .custom-button {
+          color: #a5c422;
+          background-color: #a5c422;
+          color: #fff;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 16px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+      }
+      </style>
+      <script>
+          function myFunction() {
+          alert("Your Vote was Successfully Submited");
+          }
+      </script>
+      <style>
+          .otp-input-wrapper {
+              width: 240px;
+              text-align: left;
+              display: inline-block;
+            }
+            .otp-input-wrapper input {
+              padding: 0;
+              width: 264px;
+              font-size: 32px;
+              font-weight: 600;
+              color: #3e3e3e;
+              background-color: transparent;
+              border: 0;
+              margin-left: 12px;
+              letter-spacing: 48px;
+              font-family: sans-serif !important;
+            }
+            .otp-input-wrapper input:focus {
+              box-shadow: none;
+              outline: none;
+            }
+            .otp-input-wrapper svg {
+              position: relative;
+              display: block;
+              width: 240px;
+              height: 2px;
+            }
+            
+      </style>
+      <style>
+          .form-control{
+              box-shadow: 1px 0px 8px 0px rgb(161, 190, 190);
+          }
+      </style>
+ </style>
+   </head>
+   <body class="clinic_version">
+      <!-- LOADER -->
+      
+      <!-- END LOADER -->
+      <header>
+         <div class="header-top wow fadeIn" style="background-color: #fff;height:100px;">
+            <div class="container" style="display: flex; justify-content: space-between; align-items:right;">
+                <a class="navbar-brand" href="{% url 'home' %}" style="display: flex; align-items: center;">
+                  <span style="color:dark; margin-right: 5px; font-size: 19px;">Diabetic Retinopathy Detection</span>
+
+                    <img src="{% static 'main/images/fig1.JPG' %}" alt="Diabetic Retinopathy Detection" style="height: 70px; width: 100px;">
+                </a>
+                <div class="right-header">
+                  <div class="header-info" style="display: flex; flex-wrap: wrap;">
+                     <div class="info-inner" style="flex: 1; max-width: 500px;">
+                        <span class="icontop"><img src="{% static 'main/images/phone-icon.png' %}" alt="#"></span>
+                        <span class="iconcont"><a href="tel:800123456" style="color: dark;">+91 99593 82287</a></span>
+                     </div>
+                     <div class="info-inner" style="flex: 1; max-width:900px;">
+                        <span class="icontop"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                        <span class="iconcont"><a data-scroll href="mailto:projects@codeleaf.in" style="color: dark;">projects@codeleaf.in</a></span>
+                     </div>
+                     <div class="info-inner" style="flex: 1; width:1000px;">
+                        <span class="icontop"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                        <span class="iconcont"><a data-scroll href="#" style="color: dark;">Daily: 10-6pm</a></span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+        </div>
+        
+         <div class="header-bottom wow fadeIn">
+            <div class="container">
+               <nav class="main-menu">
+                  <div class="navbar-header">
+                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i class="fa fa-bars" aria-hidden="true"></i></button>
+                  </div>
+				  
+                  <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a class="#" href="{% url 'home' %}">Home</a></li>
+                        <li><a data-scroll href="{% url 'user_login' %}">User</a></li>
+                        <li><a data-scroll href="{% url 'admin_login' %}">Admin</a></li>
+                        <li><a data-scroll href="{% url 'about_us' %}">About us</a></li>
+                        <li><a data-scroll href="{% url 'contact_us' %}">Contact</a></li>
+                     </ul>
+                  </div>
+               </nav>
+               <div class="serch-bar">
+                  <div id="custom-search-input">
+                     <div class="input-group col-md-12">
+                        <input type="text" class="form-control input-lg" placeholder="Search" />
+                        <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                        </span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </header>
+      <div class="container" style="padding-top:230px;">
+         <div class="row" style="padding-left: 50px;">
+             <div class="col-md-6 d-flex justify-content-center align-items-center"style="padding-top:30px;">
+                 <form method='post' enctype='multipart/form-data' class="d-flex">
+                     {% csrf_token %}
+                     <div class="card py-5 px-3"style="padding-top:30px;">
+                         <div class="card-body text-center">
+                             <div class="otp-input-wrapper">
+                                 <h6 class="font-weight-bold">OTP has been sent to Your Registered Mobile Number</h6>
+                                 <input type="text" name='otp'>
+                                 <svg viewBox="0 0 240 1" xmlns="http://www.w3.org/2000/svg">
+                                     <line x1="0" y1="0" x2="240" y2="0" stroke="#3e3e3e" stroke-width="2"
+                                           stroke-dasharray="44,22"/>
+                                 </svg>
+                             </div>
+                         </div>
+                         <!-- Row for the submit button -->
+                         <div class="row mt-3" style="padding-top:30px;">
+                             <div class="col text-center">
+                                 <input type="submit" value="Submit" class="btn btn-primary">
+                             </div>
+                         </div>
+     
+                         <div class="text-center mt-3">
+                             <span class="d-block mobile-text" id="countdown"></span>
+                             <span class="d-block mobile-text" id="resend"></span>
+                         </div>
+                     </div>
+                 </form><!-- Closing form tag -->
+             </div>
+             <div class="col-md-5">
+                 <div class="post-media wow fadeIn">
+                     <!-- Placeholder Image -->
+                     <img src="{% static 'main/images/4432.jpg' %}" alt="" class="img-responsive"
+                          style="height:400px;width:500px;">
+                 </div>
+                 <!-- end media -->
+             </div>
+         </div>
+     </div>
+     
+     
+       
+       
+      
+       
+     
+     
+      
+	  <!-- doctor -->
+	  
+	<div id="doctors" class="parallax section db" data-stellar-background-ratio="0.4" style="background:#fff;padding-top:50px;" data-scroll-id="doctors" tabindex="-1">
+        <div class="container">
+	        <div class="row dev-list text-center">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.2s; animation-name: fadeIn;">
+                    <div class="widget clearfix">
+                        <img src="{% static 'main/images/doctor_01.jpg' %}" alt="" class="img-responsive img-rounded">
+                        <div class="widget-title">
+                            <h3>Soren Bo Bostian</h3>
+                            <small>Clinic Owner</small>
+                        </div>
+                        <!-- end title -->
+                        <p>Hello guys, I am Soren from Sirbistana. I am senior art director and founder of Violetta.</p>
+
+                        <div class="footer-social">
+                            <a href="#" class="btn grd1"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-github"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div><!--widget -->
+                </div><!-- end col -->
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.4s; animation-name: fadeIn;">
+                    <div class="widget clearfix">
+                        <img src="{% static 'main/images/doctor_02.jpg' %}" alt="" class="img-responsive img-rounded">
+                        <div class="widget-title">
+                            <h3>Bryan Saftler</h3>
+                            <small>Internal Diseases</small>
+                        </div>
+                        <!-- end title -->
+                        <p>Hello guys, I am Soren from Sirbistana. I am senior art director and founder of Violetta.</p>
+
+                        <div class="footer-social">
+                            <a href="#" class="btn grd1"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-github"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div><!--widget -->
+                </div><!-- end col -->
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 wow fadeIn">
+                    <div class="widget clearfix">
+                        <img src="{% static 'main/images/doctor_03.jpg' %}" alt="" class="img-responsive img-rounded">
+                        <div class="widget-title">
+                            <h3>Matthew Bayliss</h3>
+                            <small>Orthopedics Expert</small>
+                        </div>
+                        <!-- end title -->
+                        <p>Hello guys, I am Soren from Sirbistana. I am senior art director and founder of Violetta.</p>
+
+                        <div class="footer-social">
+                            <a href="#" class="btn grd1"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-github"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div><!--widget -->
+                </div><!-- end col -->
+
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div>
+	  
+	
+	
+
+      <footer id="footer" class="footer-area wow fadeIn">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-4">
+                  <div class="logo padding">
+                     <a href=""><img src="{% static 'main/images/pic6.PNG' %}" alt=""></a>
+                     <p>Locavore pork belly scen ester pine est chill wave microdosing pop uple itarian cliche artisan.</p>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="footer-info padding">
+                     <h3>CONTACT US</h3>
+                     <p><i class="fa fa-map-marker" aria-hidden="true"></i> Our location
+                        Hyderabad</p>
+                     <p><i class="fa fa-paper-plane" aria-hidden="true"></i>projects@codeleaf.in</p>
+                     <p><i class="fa fa-phone" aria-hidden="true"></i> +91 99593 82287</p>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="subcriber-info">
+                     <h3>SUBSCRIBE</h3>
+                     <p>GetDiabetic Retinopathy Detection, tip and solutions to your problems from our experts.</p>
+                     <div class="subcriber-box">
+                        <form id="mc-form" class="mc-form">
+                           <div class="newsletter-form">
+                              <input type="email" autocomplete="off" id="mc-email" placeholder="Email address" class="form-control" name="EMAIL">
+                              <button class="mc-submit" type="submit"><i class="fa fa-paper-plane"></i></button> 
+                              <div class="clearfix"></div>
+                              <!-- mailchimp-alerts Start -->
+                              <div class="mailchimp-alerts">
+                                 <div class="mailchimp-submitting"></div>
+                                 <!-- mailchimp-submitting end -->
+                                 <div class="mailchimp-success"></div>
+                                 <!-- mailchimp-success end -->
+                                 <div class="mailchimp-error"></div>
+                                 <!-- mailchimp-error end -->
+                              </div>
+                              <!-- mailchimp-alerts end -->
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <div class="copyright-area wow fadeIn">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-8">
+                  <div class="footer-text">
+                     <p>© Developed by <a id="tw"  target="_blank">codeleaf.in</a></p>
+                  </div>
+               </div>
+               <div class="col-md-4">
+                  <div class="social">
+                     <ul class="social-links">
+                        <li><a href=""><i class="fa fa-rss"></i></a></li>
+                        <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                        <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                        <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href=""><i class="fa fa-youtube"></i></a></li>
+                        <li><a href=""><i class="fa fa-pinterest"></i></a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- end copyrights -->
+      <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+      <!-- all js files -->
+      <script src="{% static 'main/js/all.js' %}"></script>
+      <!-- all plugins -->
+      <script src="{% static 'main/js/custom.js' %}"></script>
+      <script src="{% static 'main/js/main.js' %}"></script>
+      <!-- map -->
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNUPWkb4Cjd7Wxo-T4uoUldFjoiUA1fJc&callback=myMap"></script>
+     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+         {% if messages %}
+            {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <script>swal({
+                            title: "Success!",
+                            text: "{{message}}",
+                            icon: "success",
+                            button: "OK",
+                        });
+                    </script>
+                
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                    <script>swal({
+                            title: "Warning :)",
+                            text: "{{message}}",
+                            icon: "warning",
+                            button: "OK",
+                        
+                        });
+                    </script>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                    <script>swal({
+                            title: "info :)",
+                            text: "{{message}}",
+                            icon: "info",
+                            button: "OK",
+                        });
+                    </script>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <script>swal({
+                            title: "error :)",
+                            text: "{{message}}",
+                            icon: "error",
+                            button: "OK",
+                        });
+                    </script>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+   </body>
+</html>
